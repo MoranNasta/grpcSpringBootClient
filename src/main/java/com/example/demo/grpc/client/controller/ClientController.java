@@ -15,9 +15,9 @@ public class ClientController
         this.clientService = clientService;
     }
 
-    @GetMapping("/hello")
-    public String greet(@RequestBody User message) {
-        return clientService.sayHelloToUser(message);
+    @GetMapping("/grpc")
+    public String grpcGreet(@RequestBody User user) {
+        return clientService.sayHelloToUser(user);
     }
 
 }

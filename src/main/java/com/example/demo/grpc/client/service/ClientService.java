@@ -22,4 +22,5 @@ public class ClientService {
         Greetings.WelcomeMessage reply = sayWelcomeServiceGrpc.sayHelloToUser(request);
         return reply.getWelcomeMessage();
     }
+
 }
