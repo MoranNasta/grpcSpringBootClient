@@ -77,6 +77,37 @@ public final class SayWelcomeServiceGrpc {
     return getSayHelloWithoutNameMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.greetings.Greetings.Empty,
+      grpc.greetings.Greetings.ListOfUsers> getGetListUsersPayloadMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetListUsersPayload",
+      requestType = grpc.greetings.Greetings.Empty.class,
+      responseType = grpc.greetings.Greetings.ListOfUsers.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.greetings.Greetings.Empty,
+      grpc.greetings.Greetings.ListOfUsers> getGetListUsersPayloadMethod() {
+    io.grpc.MethodDescriptor<grpc.greetings.Greetings.Empty, grpc.greetings.Greetings.ListOfUsers> getGetListUsersPayloadMethod;
+    if ((getGetListUsersPayloadMethod = SayWelcomeServiceGrpc.getGetListUsersPayloadMethod) == null) {
+      synchronized (SayWelcomeServiceGrpc.class) {
+        if ((getGetListUsersPayloadMethod = SayWelcomeServiceGrpc.getGetListUsersPayloadMethod) == null) {
+          SayWelcomeServiceGrpc.getGetListUsersPayloadMethod = getGetListUsersPayloadMethod =
+              io.grpc.MethodDescriptor.<grpc.greetings.Greetings.Empty, grpc.greetings.Greetings.ListOfUsers>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetListUsersPayload"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.greetings.Greetings.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.greetings.Greetings.ListOfUsers.getDefaultInstance()))
+              .setSchemaDescriptor(new SayWelcomeServiceMethodDescriptorSupplier("GetListUsersPayload"))
+              .build();
+        }
+      }
+    }
+    return getGetListUsersPayloadMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -138,6 +169,13 @@ public final class SayWelcomeServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.greetings.Greetings.WelcomeMessage> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSayHelloWithoutNameMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void getListUsersPayload(grpc.greetings.Greetings.Empty request,
+        io.grpc.stub.StreamObserver<grpc.greetings.Greetings.ListOfUsers> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetListUsersPayloadMethod(), responseObserver);
+    }
   }
 
   /**
@@ -182,6 +220,14 @@ public final class SayWelcomeServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSayHelloWithoutNameMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getListUsersPayload(grpc.greetings.Greetings.Empty request,
+        io.grpc.stub.StreamObserver<grpc.greetings.Greetings.ListOfUsers> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetListUsersPayloadMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -212,6 +258,13 @@ public final class SayWelcomeServiceGrpc {
     public grpc.greetings.Greetings.WelcomeMessage sayHelloWithoutName(grpc.greetings.Greetings.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSayHelloWithoutNameMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.greetings.Greetings.ListOfUsers getListUsersPayload(grpc.greetings.Greetings.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetListUsersPayloadMethod(), getCallOptions(), request);
     }
   }
 
@@ -246,10 +299,19 @@ public final class SayWelcomeServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSayHelloWithoutNameMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.greetings.Greetings.ListOfUsers> getListUsersPayload(
+        grpc.greetings.Greetings.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetListUsersPayloadMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SAY_HELLO_TO_USER = 0;
   private static final int METHODID_SAY_HELLO_WITHOUT_NAME = 1;
+  private static final int METHODID_GET_LIST_USERS_PAYLOAD = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -275,6 +337,10 @@ public final class SayWelcomeServiceGrpc {
         case METHODID_SAY_HELLO_WITHOUT_NAME:
           serviceImpl.sayHelloWithoutName((grpc.greetings.Greetings.Empty) request,
               (io.grpc.stub.StreamObserver<grpc.greetings.Greetings.WelcomeMessage>) responseObserver);
+          break;
+        case METHODID_GET_LIST_USERS_PAYLOAD:
+          serviceImpl.getListUsersPayload((grpc.greetings.Greetings.Empty) request,
+              (io.grpc.stub.StreamObserver<grpc.greetings.Greetings.ListOfUsers>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -308,6 +374,13 @@ public final class SayWelcomeServiceGrpc {
               grpc.greetings.Greetings.Empty,
               grpc.greetings.Greetings.WelcomeMessage>(
                 service, METHODID_SAY_HELLO_WITHOUT_NAME)))
+        .addMethod(
+          getGetListUsersPayloadMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              grpc.greetings.Greetings.Empty,
+              grpc.greetings.Greetings.ListOfUsers>(
+                service, METHODID_GET_LIST_USERS_PAYLOAD)))
         .build();
   }
 
@@ -358,6 +431,7 @@ public final class SayWelcomeServiceGrpc {
               .setSchemaDescriptor(new SayWelcomeServiceFileDescriptorSupplier())
               .addMethod(getSayHelloToUserMethod())
               .addMethod(getSayHelloWithoutNameMethod())
+              .addMethod(getGetListUsersPayloadMethod())
               .build();
         }
       }

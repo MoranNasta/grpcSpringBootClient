@@ -6,6 +6,24 @@ option java_generic_services = true;
 message User {
   string last_name = 1;
   string first_name = 2;
+  int32 id=3;
+  string address=4;
+  int64 phone_number=5;
+  string email=6;
+  bool passed=7;
+  string language=8;
+  string full_name=9;
+  string middle_name=10;
+  string month=11;
+  bool alive=12;
+  bool smart=13;
+  int32 time=14;
+  string type=15;
+  string country=16;
+  bool have_house=17;
+  bool religious=18;
+  bool  first=19;
+  bool finished=20;
 }
 
 message Empty{}
@@ -14,9 +32,12 @@ message  WelcomeMessage
 {
   string welcome_message = 1;
 }
+message ListOfUsers {
+  repeated User users = 1;
+}
 
 service SayWelcomeService {
   rpc SayHelloToUser(User) returns (WelcomeMessage){};
   rpc SayHelloWithoutName(Empty) returns (WelcomeMessage){};
-
+  rpc GetListUsersPayload(Empty) returns (ListOfUsers);
 }

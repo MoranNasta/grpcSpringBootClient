@@ -1,4 +1,4 @@
-package com.example.demo.grpc.client;
+package com.example.demo.grpc.client.configuration;
 
 import grpc.greetings.SayWelcomeServiceGrpc;
 import io.grpc.ManagedChannel;
